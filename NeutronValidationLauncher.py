@@ -1,5 +1,6 @@
 #! /bin/env python3
-from JobLauncher import *
+import os
+from JobHelper import *
 from argparse import ArgumentParser
 from os.path import join
 
@@ -8,7 +9,7 @@ parser.add_argument("-k", "--kill", action="store_true", help="kill running jobs
 parser.add_argument("--nruns",    type=int, help="number of runs for each energy")
 parser.add_argument("--nevts",    type=int, help="events per run")
 parser.add_argument("--startn",   type=int, help="starting run")
-parser.add_argument("--el",   type=str, help="element name (e.g Cu)")
+parser.add_argument("--el",       help="element name (e.g Cu)")
 parser.add_argument("--maxtime",  type=int, help="expected run time limit (s) for batch queue submissions")
 
 options = parser.parse_args()
