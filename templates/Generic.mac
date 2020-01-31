@@ -1,0 +1,13 @@
+/MG/processes/lowenergy true
+/MG/manager/heprandomseed %(jobnum)i
+/MG/eventaction/rootschema G4Steps
+/MG/eventaction/rootfilename %(outfile)s
+/MG/eventaction/writeOutFrequency %(writefreq)i
+
+%(preinit)s
+
+/run/initialize
+
+%(postinit)s
+
+/run/beamOn %(nevents)i
