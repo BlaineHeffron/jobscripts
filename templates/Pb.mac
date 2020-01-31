@@ -1,5 +1,5 @@
 # specify the gdml file you want to use
-/MG/geometry/GDML/sourceFile /global/homes/g/gilliss/dev/mjswDev/MaGe_Val/MaGe/validation/NeutronInteractions/macros/Pb.gdml
+/MG/geometry/GDML/sourceFile %(templatepath)s/Pb.gdml
 
 # use low energy physics list
 /MG/processes/lowenergy true
@@ -7,7 +7,7 @@
 
 # set output schema and define file name
 /MG/eventaction/rootschema G4Steps
-/MG/eventaction/rootfilename /global/homes/g/gilliss/dev/mjswDev/MaGe_Val/MaGe/validation/NeutronInteractions/dat/Pb_%(energy)sMeV_%(rnum)s.root
+/MG/eventaction/rootfilename %(outdir)s/Pb_%(energy)sMeV_%(rnum)s.root
 /MG/eventaction/writeOutFrequency 100
 
 # initialize MaGe
