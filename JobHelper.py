@@ -1,3 +1,5 @@
+import os
+
 def readFile(filename):
 # opens a file ("filename") and returns the content as a list of strings ("l")
     l = []
@@ -27,7 +29,6 @@ class qsubmitter:
     def start_index(self): return 1
 
     def run_jobs(self, jcmd, lcmd, r0, r1):
-        assert false
         subcmd = (self.setup + "\n#PBS -t %i-%i"%(r0+1, r1) + "\n%(xcmds)s\n")%self.settings
         subcmd += "source ${HOME}/.bashrc\n"
         subcmd += jcmd%{"jobnum":"${PBS_ARRAYID}"} + "\n"
@@ -74,6 +75,7 @@ class MaGeLauncher:
                 st["jobnum"] =  "%i"%(rnmin+n+i0)
             rname = st["run_name"]%st
             st["maxtime"] = self.maxtime - 120;
+            print(st)
             macrodat = open(self.template,"r").read()%st
             open(os.path.expanduser("%s/%s.mac"%(self.macro_dir,rname)),"w").write(macrodat)
 
@@ -90,7 +92,7 @@ class MaGeLauncher:
         for rn in range(rnmin, nruns):
             st = {"rnum": rn+i0, "jobnum": "%i"%(rn+i0)}
             rname = self.settings["run_name"]%st
-            st["outfile"] = "%s/%s.%s"%(self.settings["outdir"], rname, self.settings["out_sfx"])
+            st["outfile"] = "%s/%s.root"%(self.settings["outdir"], rname)
             jobsettings.append(st)
         self.build_and_launch_macros(jobsettings, rnmin)
 

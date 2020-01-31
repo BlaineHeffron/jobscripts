@@ -3,7 +3,7 @@
 
 # use low energy physics list
 /MG/processes/lowenergy true
-/MG/manager/heprandomseed %(jobnum)i
+/MG/manager/heprandomseed %(rnum)i
 
 # set output schema and define file name
 /MG/eventaction/rootschema G4Steps
