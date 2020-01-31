@@ -53,7 +53,7 @@ if  options.nruns and options.nevts and options.el:
         newmacro = modifyEnergy(template,st)
         thistemplate = join(tempdir,"{0}_{1}MeV.mac".format(options.el,en))
         writeFile(thistemplate,newmacro)
-        L = MaGeLauncher("{0}_NeutronValidation".format(options.el,en), options.nevts)
+        L = MaGeLauncher("{0}_NeutronValidation_{1}MeV".format(options.el,en), options.nevts)
         if options.maxtime: L.maxtime = options.maxtime
         L.template = thistemplate
         L.launch_sims(options.nruns,options.startn if options.startn else 0)
