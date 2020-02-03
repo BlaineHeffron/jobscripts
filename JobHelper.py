@@ -75,7 +75,7 @@ class MaGeLauncher:
                 st["jobnum"] =  "%i"%(rnmin+n+i0)
             rname = st["run_name"]%st
             st["maxtime"] = self.maxtime - 120;
-            print(st)
+            #print(st)
             macrodat = open(self.template,"r").read()%st
             open(os.path.expanduser("%s/%s.mac"%(self.macro_dir,rname)),"w").write(macrodat)
 
