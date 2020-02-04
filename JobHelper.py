@@ -89,7 +89,7 @@ class MaGeLauncher:
         self.set_dirs()
         i0 = self.submitter.start_index()
         jobsettings = []
-        for rn in range(rnmin, nruns):
+        for rn in range(rnmin, rnmin+nruns):
             st = {"rnum": rn+i0, "jobnum": "%i"%(rn+i0)}
             rname = self.settings["run_name"]%st
             st["outfile"] = "%s/%s.root"%(self.settings["outdir"], rname)
