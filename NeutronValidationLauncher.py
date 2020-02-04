@@ -56,6 +56,6 @@ if  options.nruns and options.nevts and options.el:
         L = MaGeLauncher("{0}_NeutronValidation_{1}MeV".format(options.el,en), options.nevts)
         if options.maxtime: L.maxtime = options.maxtime
         L.template = thistemplate
-        L.launch_sims(options.nruns,options.startn if options.startn else 0)
+        L.launch_sims(options.nruns,options.startn-1 if options.startn else 0)
 else:
     print("usage: NeutronValidationLauncher.py --nevts {number of events} --nruns {number of runs for each energy} --el {element name}\nexample: NeutronValidationLauncher.py --nevts 10000 --nruns 10 --el Cu")
