@@ -8,7 +8,6 @@
 # set output schema and define file name
 /MG/eventaction/rootschema G4Steps
 /MG/eventaction/rootfilename %(outdir)s/Ge_%(energy)sMeV_%(rnum)s.root
-/MG/eventaction/writeOutFrequency 100
 
 # initialize MaGe
 /run/initialize
