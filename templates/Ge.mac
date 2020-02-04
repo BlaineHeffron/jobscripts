@@ -27,6 +27,8 @@
 /gps/position 0 0 0
 /gps/direction 0 0 1
 
+/tracking/verbose 0
+
 # show the simulation
 #/vis/scene/add/trajectories
 /run/beamOn %(nevts)s
