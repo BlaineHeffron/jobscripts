@@ -28,6 +28,8 @@
 /gps/direction 0 0 1
 
 /tracking/verbose 0
+/run/verbose 0
+/event/verbose 0
 
 # show the simulation
 #/vis/scene/add/trajectories
