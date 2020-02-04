@@ -27,6 +27,9 @@
 /gps/position 0 0 0
 /gps/direction 0 0 1
 
+#remove debugging output
+/MG/manager/mjlog fatal
+
 /tracking/verbose 0
 /run/verbose 0
 /event/verbose 0
