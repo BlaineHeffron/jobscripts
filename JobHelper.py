@@ -80,7 +80,7 @@ class MaGeLauncher:
             open(os.path.expanduser("%s/%s.mac"%(self.macro_dir,rname)),"w").write(macrodat)
 
         # make job command and launch
-        jcmd = "%s %s/%s.mac"%(self.bin_name, self.macro_dir, self.settings["run_name"])
+        jcmd = "%s %s/%s.mac > /dev/null"%(self.bin_name, self.macro_dir, self.settings["run_name"])
         lcmd = "%s/%s.txt"%(self.log_dir, self.settings["run_name"])
         self.submitter.run_jobs(jcmd,lcmd,rnmin,nruns+rnmin)
 
