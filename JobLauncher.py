@@ -25,4 +25,4 @@ if options.template and options.nruns and options.nevts and options.name:
     L = MaGeLauncher(options.name, options.nevts)
     if options.maxtime: L.maxtime = options.maxtime
     L.template = options.template
-    L.launch_sims(options.nruns,options.startn if options.startn-1 else 0)
+    L.launch_sims(options.nruns,options.startn-1 if options.startn else 0)
