@@ -29,7 +29,7 @@ class qsubmitter:
     def start_index(self): return 1
 
     def run_jobs(self, jcmd, lcmd, r0, r1):
-        subcmd = (self.setup + "\n#PBS -t %i-%i"%(r0+1, r1+1) + "\n%(xcmds)s\n")%self.settings
+        subcmd = (self.setup + "\n#PBS -t %i-%i"%(r0+1, r1) + "\n%(xcmds)s\n")%self.settings
         subcmd += "source ${HOME}/.bashrc\n"
         subcmd += jcmd%{"jobnum":"${PBS_ARRAYID}"} + "\n"
         open("job_submit","w").write(subcmd)
