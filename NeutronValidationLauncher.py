@@ -39,7 +39,7 @@ if  options.nruns and options.nevts and options.el:
     tempdir = "templates"
     datdir =  join(os.environ["MAGEDIR"],"validation/NeutronInteractions/dat")
     energies = readFile(join(datdir,"neutronEnergies.txt"))
-    template = readFile(join(tempdir,options.el + ".mac"))
+    template = readFile(join(tempdir,"El.mac"))
     templatepath = os.path.abspath(tempdir)
     for en in energies:
         if(options.maxen):
@@ -49,7 +49,7 @@ if  options.nruns and options.nevts and options.el:
             if(float(en) < options.minen):
                 continue
         en = en.strip()
-        st = {"energy":en,"rnum":"%(rnum)s","templatepath":templatepath,"outdir":"%(outdir)s"}
+        st = {"energy":en,"rnum":"%(rnum)s","templatepath":templatepath,"outdir":"%(outdir)s","el":options.el}
         newmacro = modifyEnergy(template,st)
         thistemplate = join(tempdir,"{0}_{1}MeV.mac".format(options.el,en))
         writeFile(thistemplate,newmacro)

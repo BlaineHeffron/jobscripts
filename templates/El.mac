@@ -1,0 +1,39 @@
+# specify the gdml file you want to use
+/MG/geometry/GDML/sourceFile %(templatepath)s/%(el)s.gdml
+
+# use low energy physics list
+/MG/processes/lowenergy true
+/MG/manager/heprandomseed %(rnum)i
+
+# set output schema and define file name
+/MG/eventaction/rootschema G4Steps
+/MG/eventaction/rootfilename %(outdir)s/%(el)s_%(energy)sMeV_%(rnum)s.root
+
+# initialize MaGe
+/run/initialize
+
+# draw the geometry
+#/vis/open OGLSX
+#/vis/viewer/set/viewpointVector 0 1 1
+#/vis/viewer/set/background white
+#/vis/viewer/set/defaultColour black
+#/vis/viewer/set/viewpointThetaPhi 45
+#/vis/drawVolume
+
+# a simple simulation
+/MG/generator/select SPS
+/gps/particle neutron
+/gps/energy %(energy)s MeV
+/gps/position 0 0 0
+/gps/direction 0 0 1
+
+#remove debugging output
+/MG/manager/mglog fatal
+
+/tracking/verbose 0
+/run/verbose 0
+/event/verbose 0
+
+# show the simulation
+#/vis/scene/add/trajectories
+/run/beamOn %(nevts)s
