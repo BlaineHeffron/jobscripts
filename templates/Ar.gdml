@@ -11,7 +11,7 @@
    <D value="1e-10" />
    <atom value="14.0007" />
   </material>
-  <material Z="29" formula="Ar" name="Argon" >
+  <material Z="18" formula="Ar" name="Argon" >
     <D value="0.001633" />
     <atom value="39.95" />
   </material>
