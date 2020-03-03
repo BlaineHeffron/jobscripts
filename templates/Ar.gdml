@@ -3,7 +3,7 @@
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
 <define>
-  <position name="CenterOfTheUniverse" unit="m" x="0" y="0.0" z="1.0" />
+  <position name="CenterOfTheUniverse" unit="m" x="0" y="0.0" z="3.0" />
 </define>
 
 <materials>
@@ -19,8 +19,8 @@
 </materials>
 
 <solids>
-  <box lunit="m" name="TheBox" x="4" y="4" z="4" />
-  <box lunit="m" name="TheWorld" x="10" y="10" z="10" />
+  <box lunit="m" name="TheBox" x="8" y="8" z="8" />
+  <box lunit="m" name="TheWorld" x="12" y="12" z="12" />
 </solids>
 
 <structure>
