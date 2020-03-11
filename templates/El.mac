@@ -9,6 +9,10 @@
 /MG/eventaction/rootschema G4Steps
 /MG/eventaction/rootfilename %(outdir)s/%(el)s_%(energy)sMeV_%(rnum)s.root
 
+#use physics list that use TENDL libraries to fill in gaps for neutron cross sections
+#QGSP_BIC_AllHP instead of the default QGSP_BERT_HP
+/MG/processes/useAllHP true
+
 # initialize MaGe
 /run/initialize
 
