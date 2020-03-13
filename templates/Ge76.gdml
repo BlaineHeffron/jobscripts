@@ -6,10 +6,10 @@
   <position name="CenterOfTheUniverse" unit="m" x="0" y="0.0" z="1.0" />
 </define>
 
-<isotopes><isotope name="Ge76" Z="32" N="76"><atom type="A" value="75.921"></isotope></isotopes>
-<elements><element name="enriched_Ge76" ><fraction ref="Ge76" n="1.0" /></element></elements>
 
 <materials>
+  <isotope name="Ge76" Z="32" N="76"><atom type="A" value="75.921"/></isotope>
+  <element name="enriched_Ge76" ><fraction ref="Ge76" n="1.0" /></element>
   <material Z="7" formula=" " name="Vacuum" >
    <D value="1e-10" />
    <atom value="14.0007" />
