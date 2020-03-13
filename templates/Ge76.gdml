@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+<define>
+  <position name="CenterOfTheUniverse" unit="m" x="0" y="0.0" z="1.0" />
+</define>
+
+<isotope name="Ge76" Z="32" N="76"><atom type="A" value="75.921"></isotope>
+<element name="enriched_Ge76" ><fraction ref="Ge76" n="1.0" /></element>
+
+<materials>
+  <material Z="7" formula=" " name="Vacuum" >
+   <D value="1e-10" />
+   <atom value="14.0007" />
+  </material>
+  <material Z="32" name="enriched_Germanium76" formula="Ge">
+    <D value="5.32"/>
+    <fraction n="1.0" ref="enriched_Ge76" />
+  </material>
+</materials>
+
+<solids>
+  <box lunit="m" name="TheBox" x="4" y="4" z="4" />
+  <box lunit="m" name="TheWorld" x="10" y="10" z="10" />
+</solids>
+
+<structure>
+  <volume name="Volumina" >
+    <materialref ref="enriched_Germanium76" />
+    <solidref ref="TheBox" />
+  </volume>
+  <volume name="World" >
+     <materialref ref="Vacuum" />
+     <solidref ref="TheWorld" />
+     <physvol>
+       <volumeref ref="Volumina" />
+       <positionref ref="CenterOfTheUniverse" />
+     </physvol>
+  </volume>
+</structure>
+
+<setup name="Default" version="1.0" >
+  <world ref="World" />
+</setup>
+
+</gdml>
+
