@@ -32,8 +32,6 @@ def main():
     datdir =  join(os.environ["MAGEDIR"],"validation/NeutronInteractions/dat")
     energies = readFile(join(datdir,"neutronEnergies.txt"))
     energies = [e.rstrip() for e in energies]
-    print(energies)
-    sys.exit()
     template = join(tempdir,"xsec_template.c")
     data = {}
     for line in ELEDAT.split("\n"):

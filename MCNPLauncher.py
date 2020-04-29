@@ -62,23 +62,25 @@ class JobLauncher:
             pool = multiprocessing.Pool(processes=int(nproc*.8))
             pool.map(os.system,jobcmds)
 
-    def launch_en_sims(self, energies):
+    def launch_en_sims(self, energies,nruns=1):
         self.set_dirs()
         inseed = 19073482328125
         jobsettings = {"nevts":self.settings["nevents"],"seed":""}
         self.copyExtra(jobsettings)
         jobcmds = []
         rnmin = self.startn
-        self.settings["runName"] = "Run_%(energy)s"
+        self.settings["runName"] = "Run_%(jobnum)s_%(energy)s"
         for en in energies:
-            #jobsettings["seed"] = inseed + 2*i
-            jobsettings["seed"] = inseed
-            jobsettings["energy"] = en
-            macrodat = open(self.template,"r").read()%jobsettings
-            rname = self.settings["runName"]%jobsettings
-            fpath  = os.path.expanduser("%s/%s.c"%(self.macro_dir,rname))
-            open(fpath,"w").write(macrodat)
-            jobcmds.append("mcnp6 R I=%s O=%s RUNTPE=%s PTRAC=%s"%(fpath,rname+"_outp",rname+"_tpe",rname+"_ptrac"))
+            for i in range(rnmin,nruns+rnmin):
+                jobsettings["seed"] = inseed + 2*i
+                jobsettings["jobnum"] = str(i)
+                #jobsettings["seed"] = inseed
+                jobsettings["energy"] = en
+                macrodat = open(self.template,"r").read()%jobsettings
+                rname = self.settings["runName"]%jobsettings
+                fpath  = os.path.expanduser("%s/%s.c"%(self.macro_dir,rname))
+                open(fpath,"w").write(macrodat)
+                jobcmds.append("mcnp6 R I=%s O=%s RUNTPE=%s PTRAC=%s"%(fpath,rname+"_outp",rname+"_tpe",rname+"_ptrac"))
         nproc = multiprocessing.cpu_count()
         with(cd(os.path.expanduser(self.output_dir))):
             print("attempting to use 4/5 of " + str(nproc) + " cores")
