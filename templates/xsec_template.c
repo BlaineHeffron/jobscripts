@@ -46,5 +46,6 @@ cut:D 1E6   $ deuteron
 cut:T 1E6   $ triton
 c particle track specification
 c MEPH 1 means only 1 event per history, write all writes direction cosines, 
-PTRAC MAX=%(nevts)s MEPH=4 WRITE=ALL TYPE=N FILE=ASC
+c TYPE=N restricts written events to neutrons only
+PTRAC MAX=%(nevts)s MEPH=4 WRITE=ALL FILE=ASC $ TYPE=N 
 
