@@ -36,16 +36,16 @@ SDEF ERG=%(energy)s POS=-100 0 0 PAR=n DIR=1 VEC=1 0 0
 nps  %(nevts)s                                                                   
 phys:n J 100. 0 J J J 0.0 -1 0 $ use analog capture for these sims
 c first parameter on cut cards is the time in shakes it tracks the particle
-cut:N 1E6   $ neutron                                                               
-cut:P 1E6   $ photon                                                                 
-cut:E 1E6   $ electron                                                         
-cut:H 1E6   $ proton                                                           
-cut:A 1E6   $ alpha
-cut:S 1E6   $ 3Helium
-cut:D 1E6   $ deuteron
-cut:T 1E6   $ triton
+c cut:N 1E6   $ neutron                                                               
+c cut:P 1E6   $ photon                                                                 
+c cut:E 1E6   $ electron                                                         
+c cut:H 1E6   $ proton                                                           
+c cut:A 1E6   $ alpha
+c cut:S 1E6   $ 3Helium
+c cut:D 1E6   $ deuteron
+c cut:T 1E6   $ triton
 c particle track specification
 c MEPH 1 means only 1 event per history, write all writes direction cosines, 
 c TYPE=N restricts written events to neutrons only
-PTRAC MAX=%(nevts)s MEPH=4 WRITE=ALL FILE=ASC $ TYPE=N 
+PTRAC MAX=%(nevts)s MEPH=3 WRITE=ALL FILE=ASC $ TYPE=N 
 
