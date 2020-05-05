@@ -1,7 +1,7 @@
 #! /bin/env python3
 import os
 from argparse import ArgumentParser
-from os.path import join
+from os.path import join, expanduser
 from MCNPLauncher import *
 from JobHelper import readFile
 """use parallel -jobs <n> < nameoffile.txt where <n> is some fraction of numbner of cpus"""
@@ -29,7 +29,7 @@ def main():
         os.system("killall -9 parallel")
         os.system("killall -9 mcnp6")
     tempdir = "templates"
-    datdir =  join(os.environ["MAGEDIR"],"validation/NeutronInteractions/dat")
+    datdir =  join(expanduser(os.environ["MAGEDIR"]),"validation/NeutronInteractions/dat")
     energies = readFile(join(datdir,"neutronEnergies.txt"))
     energies = [e.rstrip() for e in energies]
     template = join(tempdir,"xsec_template.c")
@@ -43,7 +43,8 @@ def main():
     if(options.Z):
         extra["matnum"] = options.Z + "000"
         extra["density"] = data[options.Z + "000"]
-    L = JobLauncher(join("XSec",extra["matnum"]),template,options.n,0,extra)
+    numevts = str(int(options.n)*3) # multiply by 3 because 3 events per history
+    L = JobLauncher(join("XSec",extra["matnum"]),template,numevts,0,extra)
     L.launch_en_sims(energies)
 
 if __name__=="__main__":
