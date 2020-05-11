@@ -43,7 +43,7 @@ def main():
     if(options.Z):
         extra["matnum"] = options.Z + "000"
         extra["density"] = data[options.Z + "000"]
-    numevts = str(int(options.n)*3) # multiply by 3 because 3 events per history
+    numevts = str(int(options.n)*4) # multiply by 4 because 4 events per history
     L = JobLauncher(join("XSec",extra["matnum"]),template,numevts,0,extra)
     L.launch_en_sims(energies)
 
