@@ -65,7 +65,8 @@ class JobLauncher:
     def launch_en_sims(self, energies,nruns=1):
         self.set_dirs()
         inseed = 19073482328125
-        jobsettings = {"nevts":self.settings["nevents"],"seed":""}
+        jobsettings =\
+        {"nevts":self.settings["nevents"],"nevts_max":str(int(self.settings["nevents"])*3),"seed":""}
         self.copyExtra(jobsettings)
         jobcmds = []
         rnmin = self.startn

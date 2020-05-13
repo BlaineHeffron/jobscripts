@@ -23,6 +23,7 @@ def main():
     parser = ArgumentParser()
     parser.add_argument("-k", "--kill", action="store_true", help="kill running jobs")
     parser.add_argument("--Z",     help="element Z value")
+    parser.add_argument("--mat", help="material number")
     parser.add_argument("--n",     help="number of events for each energy")
     options = parser.parse_args()
     if options.kill:
@@ -39,11 +40,18 @@ def main():
         dat = line.split(" ")
         if(len(dat) > 1):
             data[dat[1] + "000"] = dat[2].rstrip()
+            if(len(dat[0]) == 1):
+                data[dat[1] + "00" + dat[0]] = dat[2].rstrip()
+            else:
+                data[dat[1] + "0" + dat[0]] = dat[2].rstrip()
     extra = {}
     if(options.Z):
         extra["matnum"] = options.Z + "000"
         extra["density"] = data[options.Z + "000"]
-    numevts = str(int(options.n)*4) # multiply by 4 because 4 events per history
+    if(options.mat):
+        extra["matnum"] = options.mat
+        extra["density"] = data[options.mat]
+    numevts = options.n
     L = JobLauncher(join("XSec",extra["matnum"]),template,numevts,0,extra)
     L.launch_en_sims(energies)
 
