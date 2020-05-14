@@ -38,7 +38,6 @@ def main():
     energies = readFile(join(datdir,"neutronEnergies.txt"))
     energies = [e.rstrip() for e in energies]
     energies = [e for e in energies if float(e) <= maxen and float(e) >= minen]
-    print("energies is ",energies)
     template = join(tempdir,"xsec_template.c")
     data = {}
     for line in ELEDAT.split("\n"):
@@ -60,8 +59,8 @@ def main():
         extra["matnum"] = options.mat
         extra["density"] = data[options.mat]
     numevts = options.n
-    #L = JobLauncher(join("XSec",extra["matnum"]),template,numevts,0,extra)
-    #L.launch_en_sims(energies)
+    L = JobLauncher(join("XSec",extra["matnum"]),template,numevts,0,extra)
+    L.launch_en_sims(energies)
 
 if __name__=="__main__":
     main()
