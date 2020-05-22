@@ -18,10 +18,10 @@ c END CELL CARD - BLANK LINE FOLLOWS
 
 c SURFACE CARDS 
 c 100 box -600 -600 -600 1200 0 0 0 1200 0 0 0 1200  
-  100 rcc 0 0 0 5000 0 0 0.001
+  100 rcc -2500 0 0 5000 0 0 0.001
 c Rest of universe -----------------------------------------------------------  
 c 900 box -601 -601 -601 1202 0 0 0 1202 0 0 0 1202 
-  900 rcc 0 0 0 5000.01 0 0 0.0011
+  900 rcc -2501 0 0 5002 0 0 0.0011
 c END SURFACE CARD - BLANK LINE FOLLOWS                                         
                                                          
 c DATA CARDS                                                                    
@@ -35,7 +35,7 @@ M1 %(matnum)s 1.0           $ Material used
 c VARIANCE REDUCTION                                                            
 imp:N   1 0 0           
 c Single energy neutron
-SDEF ERG=%(energy)s POS=-2499 0 0 PAR=n DIR=1 VEC=1 0 0                 
+SDEF ERG=%(energy)s POS=0.1 0 0 PAR=n DIR=1 VEC=1 0 0                 
 nps  %(nevts)s                                                                   
 phys:n J 100. 0 J J J 0.0 -1 0 $ use analog capture for these sims
 c first parameter on cut cards is the time in shakes it tracks the particle
