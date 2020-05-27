@@ -35,7 +35,7 @@ M1 %(matnum)s 1.0           $ Material used
 c VARIANCE REDUCTION                                                            
 imp:N   1 0 0           
 c Single energy neutron
-SDEF ERG=%(energy)s POS=0.1 0 0 PAR=n DIR=1 VEC=1 0 0                 
+SDEF ERG=%(energy)s POS=-2499.9 0 0 PAR=n DIR=1 VEC=1 0 0                 
 nps  %(nevts)s                                                                   
 phys:n J 100. 0 J J J 0.0 -1 0 $ use analog capture for these sims
 c first parameter on cut cards is the time in shakes it tracks the particle
